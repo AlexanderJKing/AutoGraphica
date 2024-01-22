@@ -1,3 +1,3 @@
 # AutoGraphica
 
-![](images/home_page.png)
+![](images/home_page.PNG)
