@@ -1,0 +1,1957 @@
+<MDRaisedButton>:
+    size_hint: (0.15, 0.05)
+
+<TextInput>:
+    size_hint: (0.15, 0.05)
+    
+    
+<HomePage>
+
+    name: "Home"
+    
+    FitImage:
+        # source: r"C:\Users\aking\OneDrive - SEAI\Documents\Work\Learning\packages\KivyMD\AutoGraphica_v1\images\home_page_design.jpg"
+        source: app.resource_path("images/home_page_design.jpg")
+
+    MDBoxLayout:
+        orientation: "horizontal"
+        # Set the size of this BoxLayout widget so that its not scrunched up in the corner of the display like it is as runtime.
+        size: root.width, root.height
+        
+
+        MDNavigationRail:
+            id: nav_rail
+            size: 150, root.height
+            use_action_button: False
+            active: True
+            current_selected_item: 0
+            disabled: True
+
+            # Hack, since we can't seem to turn the selected outline off, we can just change the background color of it to match the background color of the app.
+            selected_color_background: "#FFFFFF"
+
+            # To show that a new item is being selected, we can add a ripple effect/color that pops up
+            ripple_color_item: "#e7e4c0"
+
+
+            MDNavigationRailItem:
+                id: line
+                text: "Line Graph"
+                # icon: "C:/Users/aking/OneDrive - SEAI/Documents/Work/Learning/packages/KivyMD/AutoGraphica_v1/images/line_chart.png"
+                icon: app.resource_path("images/line_chart.png")
+                
+                on_release: 
+                    if nav_rail.disabled is False: app.change_nav_screen("Line") 
+  
+
+
+            MDNavigationRailItem:
+                id: scatter
+                text: "Scatter Plot"
+                # icon: "C:/Users/aking/OneDrive - SEAI/Documents/Work/Learning/packages/KivyMD/AutoGraphica_v1/images/scatter_plot.png"
+                icon: app.resource_path("images/scatter_plot.png")
+                
+                on_release: if nav_rail.disabled is False: app.change_nav_screen("Scatter") 
+
+
+            MDNavigationRailItem:
+                id: bar
+                text: "Bar Chart"
+                # icon: "C:/Users/aking/OneDrive - SEAI/Documents/Work/Learning/packages/KivyMD/AutoGraphica_v1/images/bar_chart.png"
+                icon: app.resource_path("images/bar_chart.png")
+                
+                on_release: if nav_rail.disabled is False: app.change_nav_screen("Bar") 
+
+            MDNavigationRailItem:
+                id: box
+                text: "Box Plot"
+                # icon: "C:/Users/aking/OneDrive - SEAI/Documents/Work/Learning/packages/KivyMD/AutoGraphica_v1/images/box_plot.png"
+                icon: app.resource_path("images/box_plot.png")
+                
+                on_release: if nav_rail.disabled is False: app.change_nav_screen("Box") 
+
+            MDNavigationRailItem:
+                id: pie
+                text: "Pie Chart"
+                # icon: "C:/Users/aking/OneDrive - SEAI/Documents/Work/Learning/packages/KivyMD/AutoGraphica_v1/images/pie_chart.png"
+                icon: app.resource_path("images/pie_chart.png")
+                
+                on_release: if nav_rail.disabled is False: app.change_nav_screen("Pie") 
+
+            MDNavigationRailItem:
+                id: histogram
+                text: "Histogram"
+                # icon: r"C:/Users/aking/OneDrive - SEAI/Documents/Work/Learning/packages/KivyMD/AutoGraphica_v1/images/histogram_chart.png"
+                icon: app.resource_path("images/histogram_chart.png")
+                
+                on_release: if nav_rail.disabled is False: app.change_nav_screen("Histogram") 
+
+            MDNavigationRailItem:
+                id: multi_line
+                text: "Multi Line Graph"
+                # icon: "C:/Users/aking/OneDrive - SEAI/Documents/Work/Learning/packages/KivyMD/AutoGraphica_v1/images/multi_line_graph.png"
+                icon: app.resource_path("images/multi_line_graph.png")
+                
+                on_release: if nav_rail.disabled is False: app.change_nav_screen("MultiLine") 
+
+            MDNavigationRailItem:
+                id: multi_scatter
+                text: "Multi Scatter Plot"
+                # icon: "C:/Users/aking/OneDrive - SEAI/Documents/Work/Learning/packages/KivyMD/AutoGraphica_v1/images/multi_scatter_plot.png"
+                icon: app.resource_path("images/multi_scatter_plot.png")
+                
+                on_release: if nav_rail.disabled is False: app.change_nav_screen("MultiScatter") 
+
+            MDNavigationRailItem:
+                id: multi_bar
+                text: "Multi Bar Chart"
+                # icon: "C:/Users/aking/OneDrive - SEAI/Documents/Work/Learning/packages/KivyMD/AutoGraphica_v1/images/multi_bar_chart.png"
+                icon: app.resource_path("images/multi_bar_chart.png")
+                
+                on_release: if nav_rail.disabled is False: app.change_nav_screen("MultiBar") 
+
+            MDNavigationRailItem:
+                id: facet
+                text: "Facet Plot"
+                # icon: r"C:/Users/aking/OneDrive - SEAI/Documents/Work/Learning/packages/KivyMD/AutoGraphica_v1/images/facet_plot.png"
+                icon: app.resource_path("images/facet_plot.png")
+                
+                on_release: if nav_rail.disabled is False: app.change_nav_screen("Facet") 
+
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size: root.width, root.height
+            
+
+            MDFloatLayout:
+                size: root.width, root.height
+
+                MDTextField:
+                    id: name_input
+                    multiline: False
+                    required: True
+                    helper_text: "Enter URL for CSV/Excel file"
+                    helper_text_mode: "on_focus"
+
+                    text_color_focus: "black"
+                    hint_text: ""
+                    mode: "round"
+
+                    line_color_normal: "black"
+                    line_color_focus: "green"
+
+                    pos_hint: {'x': 0.05, 'y': 0.5}
+                    size_hint: (0.75, 0.05)
+                    #size: (450, 79)
+
+                MDFillRoundFlatIconButton: 
+                    text: "Validate"
+                    icon: "check"
+                    text_color: "black"
+                    md_bg_color: app.theme_cls.primary_color
+                    
+                    pos_hint: {'x': 0.83, 'y': 0.5}
+                    size_hint: (0.08, 0.04)
+                    #size: (100, 25)
+                    
+                    on_press: root.disable_navrail()
+                    
+                MDFillRoundFlatIconButton: 
+                    text: "Browse"
+                    icon: "file-search-outline"
+                    text_color: "black"
+                    md_bg_color: app.theme_cls.primary_color
+                    
+                    pos_hint: {'x': 0.05, 'y': 0.40}
+                    size_hint: (0.08, 0.04)
+                    #size: (100, 25)
+                    
+                    on_release: root.open_file_manager()
+
+                MDFillRoundFlatIconButton: 
+                    text: "Clear"
+                    icon: "eraser"
+                    text_color: "black"
+                    md_bg_color: app.theme_cls.primary_color
+                    
+                    pos_hint: {'x': 0.18, 'y': 0.40}
+                    size_hint: (0.08, 0.04)
+                    #size: (100, 25)
+                    
+                    on_press: root.clear_url_textbox()
+
+
+
+               
+                
+<LinePage>
+
+    name: "Line Page"
+    
+    FitImage:
+        # source: r"C:\Users\aking\OneDrive - SEAI\Documents\Work\Learning\packages\KivyMD\AutoGraphica_v1\images\page_design.png"
+        source: app.resource_path("images/page_design.png")
+        
+    MDBoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        
+        MDTopAppBar:
+            id: Line_Config
+            title: 'Line Graph Configuration'
+            left_action_items: [["home-analytics", lambda x: app.return_home(x), "Home"], ['refresh', lambda x: app.refresh_attributes("Line Page"), "Refresh"]]
+            right_action_items: [["information-outline", lambda x: app.info_dialog("Line Page"), "Info"]]
+            
+        
+        MDFloatLayout:
+            size: root.width, root.height   
+           
+            ##########################################################
+            # current_style
+            MDLabel:
+                text: 'Plot Style'
+                pos_hint: {'x': 0.23, 'y': 0.85}
+                size_hint: (0.15, 0.1)
+            MDTextField:
+                id: style_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.19, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            MDIconButton:
+                id: styles_button
+                icon: 'menu-down'
+                pos_hint: {'x': 0.33, 'y': 0.79}
+                on_press: app.dropdown_style_menu("Line Page")
+            
+            ##########################################################
+            # custom_title
+            MDLabel:
+                text: 'Custom Title'
+                pos_hint: {'x': 0.44, 'y': 0.85}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: title_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.42, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+                
+            ##########################################################    
+            # color_code
+            MDLabel:
+                text: 'Custom Color'
+                pos_hint: {'x': 0.66, 'y': 0.85}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: color_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.64, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+                
+            ##########################################################
+            # xtick Rotation
+            MDLabel:
+                text: 'Rotate X-Axis Ticks °'
+                pos_hint: {'x': 0.19, 'y': 0.6}
+                size_hint: (0.18, 0.1)    
+            MDTextField:
+                id: xtick_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.19, 'y': 0.55}
+                size_hint: (0.1, 0.05)
+                
+            ##########################################################    
+            # legend_on
+            MDLabel:
+                text: 'Legend'
+                pos_hint: {'x': 0.405, 'y': 0.6}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: legend_input
+                pos_hint: {"x": 0.36, "y": 0.55}
+                size_hint_x: 0.15
+                on_marked: app.legend_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "on"
+                MDSegmentedButtonItem:
+                    text: "off"
+                    
+            ##########################################################
+            # orientation
+            MDLabel:
+                text: 'Orientation'
+                pos_hint: {'x': 0.63, 'y': 0.6}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: orientation_input
+                pos_hint: {"x": 0.555, "y": 0.55}
+                size_hint_x: .24
+                on_marked: app.orientation_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "vertical"
+                MDSegmentedButtonItem:
+                    text: "horizontal"
+                    
+            ##########################################################        
+            # error_bar_type
+            MDLabel:
+                text: 'Error Bar Type'
+                pos_hint: {'x': 0.32, 'y': 0.35}
+                size_hint: (0.15, 0.1)
+             
+            # sd
+            MDLabel:
+                text: 'sd'
+                pos_hint: {'x': 0.285, 'y': 0.29}
+                size_hint: (0.03, 0.03)
+            MDCheckbox:
+                id: sd_check_input
+                group: 'error bars'
+                size_hint: 0.03, 0.03
+                pos_hint: {'x': 0.325, 'y': .29}
+                on_active: app.sd_checkbox(*args)
+                
+                
+            # se     
+            MDLabel:
+                text: 'se'
+                pos_hint: {'x': 0.4, 'y': 0.29}
+                size_hint: (0.03, 0.03)
+            MDCheckbox:
+                id: se_check_input
+                group: 'error bars'
+                size_hint: 0.03, 0.03
+                pos_hint: {'x': 0.44, 'y': 0.29}
+                on_active: app.se_checkbox(*args)
+         
+         
+            # pi
+            MDLabel:
+                text: 'pi'
+                pos_hint: {'x': 0.285, 'y': 0.2}
+                size_hint: (0.03, 0.03)
+            MDCheckbox:
+                id: pi_check_input
+                group: 'error bars'
+                size_hint: 0.03, 0.03
+                pos_hint: {'x': 0.325, 'y': 0.2}
+                on_active: app.pi_checkbox(*args)
+                
+            
+            # ci
+            MDLabel:
+                text: 'ci'
+                pos_hint: {'x': 0.4, 'y': 0.2}
+                size_hint: (0.03, 0.03)
+            MDCheckbox:
+                id: ci_check_input
+                group: 'error bars'
+                size_hint: 0.03, 0.03
+                pos_hint: {'x': 0.44, 'y': .2}
+                on_active: app.ci_checkbox(*args)
+
+            ##########################################################
+            # error_bar_value
+            MDLabel:
+                text: 'Error Bar Value'
+                pos_hint: {'x': 0.51, 'y': 0.35}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: error_value_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                
+                pos_hint: {'x': 0.54, 'y': 0.30}
+                size_hint: (0.05, 0.05)       
+
+            ##########################################################
+            MDFillRoundFlatIconButton: 
+                text: "Validate"
+                icon: "check"
+                text_color: "black"
+                md_bg_color: app.theme_cls.primary_color
+                pos_hint: {'x': 0.88, "y": 0.03}
+                size_hint: (0.08, 0.04)
+                on_release: app.validate_attributes("Line Config")
+
+
+
+
+<ScatterPage>
+
+    name: "Scatter Page"
+    
+    FitImage:
+        # source: r"C:\Users\aking\OneDrive - SEAI\Documents\Work\Learning\packages\KivyMD\AutoGraphica_v1\images\page_design.png"
+        source: app.resource_path("images/page_design.png")
+        
+    MDBoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        
+        MDTopAppBar:
+            id: Scatter_Config
+            title: 'Scatter Plot Configuration'
+            left_action_items: [["home-analytics", lambda x: app.return_home(x), "Home"], ['refresh', lambda x: app.refresh_attributes("Scatter Page"), "Refresh"]]
+            right_action_items: [["information-outline", lambda x: app.info_dialog("Scatter Page"), "Info"]]
+            
+        
+        MDFloatLayout:
+            size: root.width, root.height   
+           
+            ##########################################################
+            # current_style
+            MDLabel:
+                text: 'Plot Style'
+                pos_hint: {'x': 0.23, 'y': 0.85}
+                size_hint: (0.15, 0.1)
+            MDTextField:
+                id: style_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.19, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            MDIconButton:
+                id: styles_button
+                icon: 'menu-down'
+                pos_hint: {'x': 0.33, 'y': 0.79}
+                on_press: app.dropdown_style_menu("Scatter Page")
+            
+            ##########################################################
+            # custom_title
+            MDLabel:
+                text: 'Custom Title'
+                pos_hint: {'x': 0.44, 'y': 0.85}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: title_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.42, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+                
+            ##########################################################    
+            # color_code
+            MDLabel:
+                text: 'Custom Color'
+                pos_hint: {'x': 0.66, 'y': 0.85}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: color_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.64, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+                
+            ##########################################################
+            # xtick Rotation
+            MDLabel:
+                text: 'Rotate X-Axis Ticks °'
+                pos_hint: {'x': 0.19, 'y': 0.6}
+                size_hint: (0.18, 0.1)    
+            MDTextField:
+                id: xtick_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.19, 'y': 0.55}
+                size_hint: (0.1, 0.05)
+                
+            ##########################################################    
+            # legend_on
+            MDLabel:
+                text: 'Legend'
+                pos_hint: {'x': 0.405, 'y': 0.6}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: legend_input
+                pos_hint: {"x": 0.36, "y": 0.55}
+                size_hint_x: 0.15
+                on_marked: app.legend_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "on"
+                MDSegmentedButtonItem:
+                    text: "off"
+                    
+            ##########################################################
+            # orientation
+            MDLabel:
+                text: 'Orientation'
+                pos_hint: {'x': 0.63, 'y': 0.6}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: orientation_input
+                pos_hint: {"x": 0.555, "y": 0.55}
+                size_hint_x: .24
+                on_marked: app.orientation_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "vertical"
+                MDSegmentedButtonItem:
+                    text: "horizontal" 
+                    
+            ##########################################################
+            MDFillRoundFlatIconButton: 
+                text: "Validate"
+                icon: "check"
+                text_color: "black"
+                md_bg_color: app.theme_cls.primary_color
+                pos_hint: {'x': 0.88, "y": 0.03}
+                size_hint: (0.08, 0.04)
+                on_release: app.validate_attributes("Scatter Config")
+
+
+
+<BarPage>
+
+    name: "Bar Page"
+    
+    FitImage:
+        # source: r"C:\Users\aking\OneDrive - SEAI\Documents\Work\Learning\packages\KivyMD\AutoGraphica_v1\images\page_design.png"
+        source: app.resource_path("images/page_design.png")
+        
+    MDBoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        
+        MDTopAppBar:
+            id: Bar_Config
+            title: 'Bar Chart Configuration'
+            left_action_items: [["home-analytics", lambda x: app.return_home(x), "Home"], ['refresh', lambda x: app.refresh_attributes("Bar Page"), "Refresh"]]
+            right_action_items: [["information-outline", lambda x: app.info_dialog("Bar Page"), "Info"]]
+            
+        
+        MDFloatLayout:
+            size: root.width, root.height   
+           
+            ##########################################################
+            # current_style
+            MDLabel:
+                text: 'Plot Style'
+                pos_hint: {'x': 0.23, 'y': 0.85}
+                size_hint: (0.15, 0.1)
+            MDTextField:
+                id: style_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.19, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            MDIconButton:
+                id: styles_button
+                icon: 'menu-down'
+                pos_hint: {'x': 0.33, 'y': 0.79}
+                on_press: app.dropdown_style_menu("Bar Page")
+            
+            ##########################################################
+            # custom_title
+            MDLabel:
+                text: 'Custom Title'
+                pos_hint: {'x': 0.44, 'y': 0.85}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: title_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.42, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+                
+            ##########################################################    
+            # color_code
+            MDLabel:
+                text: 'Custom Color'
+                pos_hint: {'x': 0.66, 'y': 0.85}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: color_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.64, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+                
+            ##########################################################
+            # xtick Rotation
+            MDLabel:
+                text: 'Rotate X-Axis Ticks °'
+                pos_hint: {'x': 0.19, 'y': 0.6}
+                size_hint: (0.18, 0.1)    
+            MDTextField:
+                id: xtick_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.19, 'y': 0.55}
+                size_hint: (0.1, 0.05)
+                
+            ##########################################################    
+            # legend_on
+            MDLabel:
+                text: 'Legend'
+                pos_hint: {'x': 0.405, 'y': 0.6}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: legend_input
+                pos_hint: {"x": 0.36, "y": 0.55}
+                size_hint_x: 0.15
+                on_marked: app.legend_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "on"
+                MDSegmentedButtonItem:
+                    text: "off"
+                    
+            ##########################################################
+            # orientation
+            MDLabel:
+                text: 'Orientation'
+                pos_hint: {'x': 0.63, 'y': 0.6}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: orientation_input
+                pos_hint: {"x": 0.555, "y": 0.55}
+                size_hint_x: .24
+                on_marked: app.orientation_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "vertical"
+                MDSegmentedButtonItem:
+                    text: "horizontal" 
+                
+            ##########################################################    
+            # single_axes
+            MDLabel:
+                text: 'Single Axis'
+                pos_hint: {'x': 0.44, 'y': 0.35}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: single_axes_input
+                pos_hint: {"x": 0.41, "y": 0.30}
+                size_hint_x: 0.15
+                on_marked: app.single_axes_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "on"
+                MDSegmentedButtonItem:
+                    text: "off"
+                    
+            ##########################################################        
+            MDFillRoundFlatIconButton: 
+                text: "Validate"
+                icon: "check"
+                text_color: "black"
+                md_bg_color: app.theme_cls.primary_color
+                pos_hint: {'x': 0.88, "y": 0.03}
+                size_hint: (0.08, 0.04)
+                on_release: app.validate_attributes("Bar Config")
+
+
+<BoxPage>
+
+    name: "Box Page"
+    
+    FitImage:
+        # source: r"C:\Users\aking\OneDrive - SEAI\Documents\Work\Learning\packages\KivyMD\AutoGraphica_v1\images\page_design.png"
+        source: app.resource_path("images/page_design.png")
+        
+    MDBoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        
+        MDTopAppBar:
+            id: Box_Config
+            title: 'Box Plot Configuration'
+            left_action_items: [["home-analytics", lambda x: app.return_home(x), "Home"], ['refresh', lambda x: app.refresh_attributes("Box Page"), "Refresh"]]
+            right_action_items: [["information-outline", lambda x: app.info_dialog("Box Page"), "Info"]]
+            
+        
+        MDFloatLayout:
+            size: root.width, root.height   
+           
+            ##########################################################
+            # current_style
+            MDLabel:
+                text: 'Plot Style'
+                pos_hint: {'x': 0.23, 'y': 0.85}
+                size_hint: (0.15, 0.1)
+            MDTextField:
+                id: style_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.19, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            MDIconButton:
+                id: styles_button
+                icon: 'menu-down'
+                pos_hint: {'x': 0.33, 'y': 0.79}
+                on_press: app.dropdown_style_menu("Box Page")
+            
+            ##########################################################
+            # custom_title
+            MDLabel:
+                text: 'Custom Title'
+                pos_hint: {'x': 0.44, 'y': 0.85}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: title_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.42, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+                
+            ##########################################################    
+            # color_code
+            MDLabel:
+                text: 'Custom Color'
+                pos_hint: {'x': 0.66, 'y': 0.85}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: color_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.64, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+                
+            ##########################################################
+            # xtick Rotation
+            MDLabel:
+                text: 'Rotate X-Axis Ticks °'
+                pos_hint: {'x': 0.19, 'y': 0.6}
+                size_hint: (0.18, 0.1)    
+            MDTextField:
+                id: xtick_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.19, 'y': 0.55}
+                size_hint: (0.1, 0.05)
+                
+            ##########################################################    
+            # legend_on
+            MDLabel:
+                text: 'Legend'
+                pos_hint: {'x': 0.405, 'y': 0.6}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: legend_input
+                pos_hint: {"x": 0.36, "y": 0.55}
+                size_hint_x: 0.15
+                on_marked: app.legend_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "on"
+                MDSegmentedButtonItem:
+                    text: "off"
+                    
+            ##########################################################
+            # orientation
+            MDLabel:
+                text: 'Orientation'
+                pos_hint: {'x': 0.63, 'y': 0.6}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: orientation_input
+                pos_hint: {"x": 0.555, "y": 0.55}
+                size_hint_x: .24
+                on_marked: app.orientation_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "vertical"
+                MDSegmentedButtonItem:
+                    text: "horizontal" 
+                
+            ##########################################################    
+            # Categorical Plot
+            # MDLabel:
+                # text: 'Third Axis Active'
+                # pos_hint: {'x': 0.20, 'y': 0.35}
+                # size_hint: (0.15, 0.1)
+                
+            # MDSegmentedButton:
+                # id: third_axis_input
+                # pos_hint: {"x": 0.19, "y": 0.30}
+                # size_hint_x: 0.15
+                # on_marked: app.categorical_plot_on_marked(*args, chart_page="Box Page")
+                
+                # MDSegmentedButtonItem:
+                    # text: "on"
+                # MDSegmentedButtonItem:
+                    # text: "off"
+                    
+            ##########################################################
+            # Palettes
+            # MDLabel:
+                # text: 'Palettes'
+                # pos_hint: {'x': 0.46, 'y': 0.35}
+                # size_hint: (0.15, 0.1)
+            # MDTextField:
+                # id: palette_input
+                # multiline: False
+                # disabled: True
+                # mode: "round"
+                # text_color_focus: "black"
+                # pos_hint: {'x': 0.42, 'y': 0.30}
+                # size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            # MDIconButton:
+                # id: palettes_button
+                # icon: 'menu-down'
+                # disabled: True
+                # pos_hint: {'x': 0.56, 'y': 0.29}
+                # on_press: app.dropdown_palette_menu("Box Page")
+                
+            ##########################################################
+            # Space Legend Out
+            # MDLabel:
+                # text: 'Legend Spacing'
+                # pos_hint: {'x': 0.64, 'y': 0.35}
+                # size_hint: (0.15, 0.1)    
+            # MDTextField:
+                # id: legend_spacing
+                # multiline: False
+                # disabled: True
+                # mode: "round"
+                # text_color_focus: "black"
+                
+                # pos_hint: {'x': 0.64, 'y': 0.30}
+                # size_hint: (0.05, 0.05)   
+                    
+            ##########################################################        
+            MDFillRoundFlatIconButton: 
+                text: "Validate"
+                icon: "check"
+                text_color: "black"
+                md_bg_color: app.theme_cls.primary_color
+                pos_hint: {'x': 0.88, "y": 0.03}
+                size_hint: (0.08, 0.04)
+                on_release: app.validate_attributes("Box Config")
+
+
+
+
+<PiePage>
+
+    name: "Pie Page"
+    
+    FitImage:
+        # source: r"C:\Users\aking\OneDrive - SEAI\Documents\Work\Learning\packages\KivyMD\AutoGraphica_v1\images\page_design.png"
+        source: app.resource_path("images/page_design.png")
+        
+    MDBoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        
+        MDTopAppBar:
+            id: Pie_Config
+            title: 'Pie Chart Configuration'
+            left_action_items: [["home-analytics", lambda x: app.return_home(x), "Home"], ['refresh', lambda x: app.refresh_attributes("Pie Page"), "Refresh"]]
+            right_action_items: [["information-outline", lambda x: app.info_dialog("Pie Page"), "Info"]]
+            
+        
+        MDFloatLayout:
+            size: root.width, root.height   
+           
+            ##########################################################    ROW 1
+            # current_style
+            MDLabel:
+                text: 'Plot Style'
+                pos_hint: {'x': 0.23, 'y': 0.85}
+                size_hint: (0.15, 0.1)
+            MDTextField:
+                id: style_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.19, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            MDIconButton:
+                id: styles_button
+                icon: 'menu-down'
+                pos_hint: {'x': 0.33, 'y': 0.79}
+                on_press: app.dropdown_style_menu("Pie Page")
+            
+            ##########################################################
+            # custom_title
+            MDLabel:
+                text: 'Custom Title'
+                pos_hint: {'x': 0.44, 'y': 0.85}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: title_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.42, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+
+            ##########################################################
+            # Donut
+            MDLabel:
+                text: 'Donut'
+                pos_hint: {'x': 0.71, 'y': 0.85}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: donut
+                pos_hint: {"x": 0.66, "y": 0.80}
+                size_hint_x: 0.15
+                on_marked: app.donut_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "on"
+                MDSegmentedButtonItem:
+                    text: "off"  
+                
+            ##########################################################    ROW 2
+            # legend_on
+            MDLabel:
+                text: 'Legend'
+                pos_hint: {'x': 0.32, 'y': 0.6}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: legend_input
+                pos_hint: {"x": 0.27, "y": 0.55}
+                size_hint_x: 0.15
+                on_marked: app.legend_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "on"
+                MDSegmentedButtonItem:
+                    text: "off"
+                    
+            ##########################################################
+            # Palettes
+            MDLabel:
+                text: 'Palettes'
+                pos_hint: {'x': 0.57, 'y': 0.6}
+                size_hint: (0.15, 0.1)
+            MDTextField:
+                id: palette_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.53, 'y': 0.55}
+                size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            MDIconButton:
+                id: palettes_button
+                icon: 'menu-down'
+                pos_hint: {'x': 0.67, 'y': 0.54}
+                on_press: app.dropdown_palette_menu("Pie Page")
+                
+            ##########################################################    ROW 3
+            # Pie Rotation 
+            MDLabel:
+                text: 'Pie Chart Rotation'
+                pos_hint: {'x': 0.19, 'y': 0.35}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: pie_rotation 
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                
+                pos_hint: {'x': 0.19, 'y': 0.30}
+                size_hint: (0.05, 0.05) 
+                
+            ##########################################################
+            # Pie Slice
+            MDLabel:
+                text: 'Explode Slice'
+                pos_hint: {'x': 0.44, 'y': 0.35}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: pie_slice
+                pos_hint: {"x": 0.34, "y": 0.30}
+                size_hint_x: 0.30
+                on_marked: app.pie_slice_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "smallest"
+                MDSegmentedButtonItem:
+                    text: "largest"
+                MDSegmentedButtonItem:
+                    text: "none"
+
+                
+            ##########################################################   
+            # Space Legend Out
+            MDLabel:
+                text: 'Legend Spacing'
+                pos_hint: {'x': 0.66, 'y': 0.35}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: legend_spacing
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                
+                pos_hint: {'x': 0.69, 'y': 0.30}
+                size_hint: (0.05, 0.05)    
+                    
+            ##########################################################        
+            MDFillRoundFlatIconButton: 
+                text: "Validate"
+                icon: "check"
+                text_color: "black"
+                md_bg_color: app.theme_cls.primary_color
+                pos_hint: {'x': 0.88, "y": 0.03}
+                size_hint: (0.08, 0.04)
+                on_release: app.validate_attributes("Pie Config")
+
+
+
+<HistogramPage>
+
+    name: "Histogram Page"
+    
+    FitImage:
+        # source: r"C:\Users\aking\OneDrive - SEAI\Documents\Work\Learning\packages\KivyMD\AutoGraphica_v1\images\page_design.png"
+        source: app.resource_path("images/page_design.png")
+        
+    MDBoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        
+        MDTopAppBar:
+            id: Histogram_Config
+            title: 'Histogram Plot Configuration'
+            left_action_items: [["home-analytics", lambda x: app.return_home(x), "Home"], ['refresh', lambda x: app.refresh_attributes("Histogram Page"), "Refresh"]]
+            right_action_items: [["information-outline", lambda x: app.info_dialog("Histogram Page"), "Info"]]
+            
+        
+        MDFloatLayout:
+            size: root.width, root.height   
+           
+            ##########################################################
+            # current_style
+            MDLabel:
+                text: 'Plot Style'
+                pos_hint: {'x': 0.23, 'y': 0.85}
+                size_hint: (0.15, 0.1)
+            MDTextField:
+                id: style_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.19, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            MDIconButton:
+                id: styles_button
+                icon: 'menu-down'
+                pos_hint: {'x': 0.33, 'y': 0.79}
+                on_press: app.dropdown_style_menu("Histogram Page")
+            
+            ##########################################################
+            # custom_title
+            MDLabel:
+                text: 'Custom Title'
+                pos_hint: {'x': 0.44, 'y': 0.85}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: title_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.42, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+                
+            ##########################################################    
+            # color_code
+            MDLabel:
+                text: 'Custom Color'
+                pos_hint: {'x': 0.66, 'y': 0.85}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: color_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.64, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+                
+            ##########################################################
+            # xtick Rotation
+            MDLabel:
+                text: 'Rotate X-Axis Ticks °'
+                pos_hint: {'x': 0.19, 'y': 0.6}
+                size_hint: (0.18, 0.1)    
+            MDTextField:
+                id: xtick_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.19, 'y': 0.55}
+                size_hint: (0.1, 0.05)
+                
+            ##########################################################    
+            # legend_on
+            MDLabel:
+                text: 'Legend'
+                pos_hint: {'x': 0.46, 'y': 0.6}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: legend_input
+                pos_hint: {"x": 0.42, "y": 0.55}
+                size_hint_x: 0.15
+                on_marked: app.legend_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "on"
+                MDSegmentedButtonItem:
+                    text: "off"
+                    
+            ##########################################################
+            # Number of Bins
+            MDLabel:
+                text: 'Number of Bins'
+                pos_hint: {'x': 0.65, 'y': 0.6}
+                size_hint: (0.18, 0.1)    
+            MDTextField:
+                id: hist_bins
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.66, 'y': 0.55}
+                size_hint: (0.1, 0.05)
+                
+            ##########################################################
+            # Histogram Type
+            MDLabel:
+                text: 'Type'
+                pos_hint: {'x': 0.48, 'y': 0.35}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: hist_type
+                pos_hint: {"x": 0.42, "y": 0.30}
+                size_hint_x: 0.15
+                on_marked: app.histogram_type_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "bars"
+                MDSegmentedButtonItem:
+                    text: "area"
+                    
+            ##########################################################
+            MDFillRoundFlatIconButton: 
+                text: "Validate"
+                icon: "check"
+                text_color: "black"
+                md_bg_color: app.theme_cls.primary_color
+                pos_hint: {'x': 0.88, "y": 0.03}
+                size_hint: (0.08, 0.04)
+                on_release: app.validate_attributes("Histogram Config")
+
+
+
+<MultiLinePage>
+    name: "MultiLine Page"
+    
+    FitImage:
+        # source: r"C:\Users\aking\OneDrive - SEAI\Documents\Work\Learning\packages\KivyMD\AutoGraphica_v1\images\page_design.png"
+        source: app.resource_path("images/page_design.png")
+        
+    MDBoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        
+        MDTopAppBar:
+            id: MultiLine_Config
+            title: 'MultiLine Chart Configuration'
+            left_action_items: [["home-analytics", lambda x: app.return_home(x), "Home"], ['refresh', lambda x: app.refresh_attributes("MultiLine Page"), "Refresh"]]
+            right_action_items: [["information-outline", lambda x: app.info_dialog("MultiLine Page"), "Info"]]
+            
+        
+        MDFloatLayout:
+            size: root.width, root.height   
+           
+            ##########################################################
+            # current_style
+            MDLabel:
+                text: 'Plot Style'
+                pos_hint: {'x': 0.23, 'y': 0.85}
+                size_hint: (0.15, 0.1)
+            MDTextField:
+                id: style_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.19, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            MDIconButton:
+                id: styles_button
+                icon: 'menu-down'
+                pos_hint: {'x': 0.33, 'y': 0.79}
+                on_press: app.dropdown_style_menu("MultiLine Page")
+            
+            ##########################################################
+            # custom_title
+            MDLabel:
+                text: 'Custom Title'
+                pos_hint: {'x': 0.44, 'y': 0.85}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: title_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.42, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+                
+            ##########################################################
+            # xtick Rotation
+            MDLabel:
+                text: 'Rotate X-Axis Ticks °'
+                pos_hint: {'x': 0.66, 'y': 0.85}
+                size_hint: (0.18, 0.1)    
+            MDTextField:
+                id: xtick_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.68, 'y': 0.80}
+                size_hint: (0.1, 0.05)
+                    
+
+            ##########################################################    
+            # legend_on
+            MDLabel:
+                text: 'Legend'
+                pos_hint: {'x': 0.23, 'y': 0.6}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: legend_input
+                pos_hint: {"x": 0.19, "y": 0.55}
+                size_hint_x: 0.15
+                on_marked: app.legend_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "on"
+                MDSegmentedButtonItem:
+                    text: "off"
+                    
+            ##########################################################   
+            # Space Legend Out
+            MDLabel:
+                text: 'Legend Spacing'
+                pos_hint: {'x': 0.43, 'y': 0.6}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: legend_spacing
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                
+                pos_hint: {'x': 0.465, 'y': 0.55}
+                size_hint: (0.05, 0.05)
+                    
+            ##########################################################
+            # orientation
+            MDLabel:
+                text: 'Orientation'
+                pos_hint: {'x': 0.66, 'y': 0.6}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: orientation_input
+                pos_hint: {"x": 0.59, "y": 0.55}
+                size_hint_x: .24
+                on_marked: app.orientation_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "vertical"
+                MDSegmentedButtonItem:
+                    text: "horizontal" 
+                    
+            ##########################################################   
+            # Palettes
+            MDLabel:
+                text: 'Palettes'
+                pos_hint: {'x': 0.46, 'y': 0.35}
+                size_hint: (0.15, 0.1)
+            MDTextField:
+                id: palette_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.42, 'y': 0.30}
+                size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            MDIconButton:
+                id: palettes_button
+                icon: 'menu-down'
+                pos_hint: {'x': 0.56, 'y': 0.29}
+                on_press: app.dropdown_palette_menu("MultiLine Page")
+                    
+            ##########################################################
+            MDFillRoundFlatIconButton: 
+                text: "Validate"
+                icon: "check"
+                text_color: "black"
+                md_bg_color: app.theme_cls.primary_color
+                pos_hint: {'x': 0.88, "y": 0.03}
+                size_hint: (0.08, 0.04)
+                on_release: app.validate_attributes("MultiLine Config")
+
+
+
+<MultiScatterPage>
+
+    name: "MultiScatter Page"
+    
+    FitImage:
+        # source: r"C:\Users\aking\OneDrive - SEAI\Documents\Work\Learning\packages\KivyMD\AutoGraphica_v1\images\page_design.png"
+        source: app.resource_path("images/page_design.png")
+        
+    MDBoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        
+        MDTopAppBar:
+            id: MultiScatter_Config
+            title: 'MultiScatter Chart Configuration'
+            left_action_items: [["home-analytics", lambda x: app.return_home(x), "Home"], ['refresh', lambda x: app.refresh_attributes("MultiScatter Page"), "Refresh"]]
+            right_action_items: [["information-outline", lambda x: app.info_dialog("MultiScatter Page"), "Info"]]
+            
+        
+        MDFloatLayout:
+            size: root.width, root.height   
+           
+            ##########################################################
+            # current_style
+            MDLabel:
+                text: 'Plot Style'
+                pos_hint: {'x': 0.23, 'y': 0.85}
+                size_hint: (0.15, 0.1)
+            MDTextField:
+                id: style_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.19, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            MDIconButton:
+                id: styles_button
+                icon: 'menu-down'
+                pos_hint: {'x': 0.33, 'y': 0.79}
+                on_press: app.dropdown_style_menu("MultiScatter Page")
+            
+            ##########################################################
+            # custom_title
+            MDLabel:
+                text: 'Custom Title'
+                pos_hint: {'x': 0.44, 'y': 0.85}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: title_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.42, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+                
+            ##########################################################
+            # xtick Rotation
+            MDLabel:
+                text: 'Rotate X-Axis Ticks °'
+                pos_hint: {'x': 0.66, 'y': 0.85}
+                size_hint: (0.18, 0.1)    
+            MDTextField:
+                id: xtick_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.68, 'y': 0.80}
+                size_hint: (0.1, 0.05)
+                    
+
+            ##########################################################    
+            # legend_on
+            MDLabel:
+                text: 'Legend'
+                pos_hint: {'x': 0.23, 'y': 0.6}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: legend_input
+                pos_hint: {"x": 0.19, "y": 0.55}
+                size_hint_x: 0.15
+                on_marked: app.legend_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "on"
+                MDSegmentedButtonItem:
+                    text: "off"
+                    
+            ##########################################################   
+            # Space Legend Out
+            MDLabel:
+                text: 'Legend Spacing'
+                pos_hint: {'x': 0.43, 'y': 0.6}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: legend_spacing
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                
+                pos_hint: {'x': 0.465, 'y': 0.55}
+                size_hint: (0.05, 0.05)
+                    
+            ##########################################################
+            # orientation
+            MDLabel:
+                text: 'Orientation'
+                pos_hint: {'x': 0.66, 'y': 0.6}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: orientation_input
+                pos_hint: {"x": 0.59, "y": 0.55}
+                size_hint_x: .24
+                on_marked: app.orientation_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "vertical"
+                MDSegmentedButtonItem:
+                    text: "horizontal" 
+                    
+            ##########################################################   
+            # Palettes
+            MDLabel:
+                text: 'Palettes'
+                pos_hint: {'x': 0.46, 'y': 0.35}
+                size_hint: (0.15, 0.1)
+            MDTextField:
+                id: palette_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.42, 'y': 0.30}
+                size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            MDIconButton:
+                id: palettes_button
+                icon: 'menu-down'
+                pos_hint: {'x': 0.56, 'y': 0.29}
+                on_press: app.dropdown_palette_menu("MultiScatter Page")
+                    
+            ##########################################################
+            MDFillRoundFlatIconButton: 
+                text: "Validate"
+                icon: "check"
+                text_color: "black"
+                md_bg_color: app.theme_cls.primary_color
+                pos_hint: {'x': 0.88, "y": 0.03}
+                size_hint: (0.08, 0.04)
+                on_release: app.validate_attributes("MultiScatter Config")
+
+
+
+<MultiBarPage>
+
+    name: "MultiBar Page"
+    
+    FitImage:
+        # source: r"C:\Users\aking\OneDrive - SEAI\Documents\Work\Learning\packages\KivyMD\AutoGraphica_v1\images\page_design.png"
+        source: app.resource_path("images/page_design.png")
+        
+    MDBoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        
+        MDTopAppBar:
+            id: MultiBar_Config
+            title: 'MultiBar Chart Configuration'
+            left_action_items: [["home-analytics", lambda x: app.return_home(x), "Home"], ['refresh', lambda x: app.refresh_attributes("MultiBar Page"), "Refresh"]]
+            right_action_items: [["information-outline", lambda x: app.info_dialog("MultiBar Page"), "Info"]]
+            
+        
+        MDFloatLayout:
+            size: root.width, root.height   
+           
+            ##########################################################
+            # current_style
+            MDLabel:
+                text: 'Plot Style'
+                pos_hint: {'x': 0.23, 'y': 0.85}
+                size_hint: (0.15, 0.1)
+            MDTextField:
+                id: style_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.19, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            MDIconButton:
+                id: styles_button
+                icon: 'menu-down'
+                pos_hint: {'x': 0.33, 'y': 0.79}
+                on_press: app.dropdown_style_menu("MultiBar Page")
+            
+            ##########################################################
+            # custom_title
+            MDLabel:
+                text: 'Custom Title'
+                pos_hint: {'x': 0.44, 'y': 0.85}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: title_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.42, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+                
+            ##########################################################
+            # xtick Rotation
+            MDLabel:
+                text: 'Rotate X-Axis Ticks °'
+                pos_hint: {'x': 0.66, 'y': 0.85}
+                size_hint: (0.18, 0.1)    
+            MDTextField:
+                id: xtick_input
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.68, 'y': 0.80}
+                size_hint: (0.1, 0.05)
+                    
+
+            ##########################################################    
+            # legend_on
+            MDLabel:
+                text: 'Legend'
+                pos_hint: {'x': 0.23, 'y': 0.6}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: legend_input
+                pos_hint: {"x": 0.19, "y": 0.55}
+                size_hint_x: 0.15
+                on_marked: app.legend_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "on"
+                MDSegmentedButtonItem:
+                    text: "off"
+                    
+            ##########################################################   
+            # Space Legend Out
+            MDLabel:
+                text: 'Legend Spacing'
+                pos_hint: {'x': 0.43, 'y': 0.6}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: legend_spacing
+                multiline: False
+                disabled: False
+                mode: "round"
+                text_color_focus: "black"
+                
+                pos_hint: {'x': 0.465, 'y': 0.55}
+                size_hint: (0.05, 0.05)
+                    
+            ##########################################################
+            # orientation
+            MDLabel:
+                text: 'Orientation'
+                pos_hint: {'x': 0.66, 'y': 0.6}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: orientation_input
+                pos_hint: {"x": 0.59, "y": 0.55}
+                size_hint_x: .24
+                on_marked: app.orientation_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "vertical"
+                MDSegmentedButtonItem:
+                    text: "horizontal" 
+                    
+            ##########################################################   
+            # single_axes
+            MDLabel:
+                text: 'Single Axis'
+                pos_hint: {'x': 0.34, 'y': 0.35}
+                size_hint: (0.15, 0.1)
+                
+            MDSegmentedButton:
+                id: single_axes_input
+                pos_hint: {"x": 0.31, "y": 0.30}
+                size_hint_x: 0.15
+                on_marked: app.single_axes_on_marked(*args)
+                
+                MDSegmentedButtonItem:
+                    text: "on"
+                MDSegmentedButtonItem:
+                    text: "off"
+                    
+            ##########################################################     
+            # Palettes
+            MDLabel:
+                text: 'Palettes'
+                pos_hint: {'x': 0.60, 'y': 0.35}
+                size_hint: (0.15, 0.1)
+            MDTextField:
+                id: palette_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.56, 'y': 0.30}
+                size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            MDIconButton:
+                id: palettes_button
+                icon: 'menu-down'
+                pos_hint: {'x': 0.70, 'y': 0.29}
+                on_press: app.dropdown_palette_menu("MultiBar Page")
+                    
+            ##########################################################
+            MDFillRoundFlatIconButton: 
+                text: "Validate"
+                icon: "check"
+                text_color: "black"
+                md_bg_color: app.theme_cls.primary_color
+                pos_hint: {'x': 0.88, "y": 0.03}
+                size_hint: (0.08, 0.04)
+                on_release: app.validate_attributes("MultiBar Config")
+
+
+
+<FacetPage>
+
+    name: "Facet Page"
+    
+    FitImage:
+        # source: r"C:\Users\aking\OneDrive - SEAI\Documents\Work\Learning\packages\KivyMD\AutoGraphica_v1\images\page_design.png"
+        source: app.resource_path("images/page_design.png")
+        
+    MDBoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        
+        MDTopAppBar:
+            id: Facet_Config
+            title: 'Facet Chart Configuration'
+            left_action_items: [["home-analytics", lambda x: app.return_home(x), "Home"], ['refresh', lambda x: app.refresh_attributes("Facet Page"), "Refresh"]]
+            right_action_items: [["information-outline", lambda x: app.info_dialog("Facet Page"), "Info"]]
+            
+        
+        MDFloatLayout:
+            size: root.width, root.height 
+            
+            ##########################################################
+            # high_cardinal_variables
+            MDLabel:
+                text: 'High Cardinal Variables'
+                pos_hint: {'x': 0.29, 'y': 0.85}
+                size_hint: (0.25, 0.1)
+            MDTextField:
+                id: high_card_vars
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.30, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            MDIconButton:
+                id: high_cards_button
+                icon: 'menu-down'
+                pos_hint: {'x': 0.44, 'y': 0.79}
+                on_press: app.dropdown_facet_x_menu("Facet Page")
+                
+                
+            ##########################################################
+            # y variables
+            MDLabel:
+                text: 'Y-Axis Variables'
+                pos_hint: {'x': 0.56, 'y': 0.85}
+                size_hint: (0.25, 0.1)
+            MDTextField:
+                id: y_vars
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.55, 'y': 0.80}
+                size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            MDIconButton:
+                id: y_axis_button
+                icon: 'menu-down'
+                disabled: True
+                pos_hint: {'x': 0.69, 'y': 0.79}
+                on_press: app.dropdown_facet_y_menu("Facet Page")
+           
+            ##########################################################
+            # current_style
+            MDLabel:
+                text: 'Plot Style'
+                pos_hint: {'x': 0.23, 'y': 0.62}
+                size_hint: (0.15, 0.1)
+            MDTextField:
+                id: style_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.19, 'y': 0.57}
+                size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            MDIconButton:
+                id: styles_button
+                icon: 'menu-down'
+                disabled: True
+                pos_hint: {'x': 0.33, 'y': 0.56}
+                on_press: app.dropdown_style_menu("Facet Page")
+            
+            ##########################################################
+            # custom_title
+            MDLabel:
+                text: 'Custom Title'
+                pos_hint: {'x': 0.44, 'y': 0.62}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: title_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.42, 'y': 0.57}
+                size_hint: (0.15, 0.05)
+            
+            ##########################################################
+            # color_code
+            MDLabel:
+                text: 'Custom Color'
+                pos_hint: {'x': 0.68, 'y': 0.62}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: color_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.66, 'y': 0.57}
+                size_hint: (0.15, 0.05)
+                
+            ##########################################################
+            # xtick Rotation
+            MDLabel:
+                text: 'Rotate X-Axis Ticks °'
+                pos_hint: {'x': 0.19, 'y': 0.40}
+                size_hint: (0.18, 0.1)    
+            MDTextField:
+                id: xtick_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.21, 'y': 0.35}
+                size_hint: (0.1, 0.05)
+                
+                    
+            ##########################################################
+            # Palettes
+            MDLabel:
+                text: 'Palettes'
+                pos_hint: {'x': 0.46, 'y': 0.40}
+                size_hint: (0.15, 0.1)
+            MDTextField:
+                id: palette_input
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                pos_hint: {'x': 0.42, 'y': 0.35}
+                size_hint: (0.15, 0.05)
+            # This will be the drop down menu for the matplotlib styles
+            MDIconButton:
+                id: palettes_button
+                icon: 'menu-down'
+                disabled: True
+                pos_hint: {'x': 0.56, 'y': 0.34}
+                on_press: app.dropdown_palette_menu("Facet Page")
+                    
+            ##########################################################   
+            # No. of bars per subplot
+            MDLabel:
+                text: 'No. of Bars per Subplot'
+                pos_hint: {'x': 0.65, 'y': 0.40}
+                size_hint: (0.20, 0.1)    
+            MDTextField:
+                id: n_bars_per_facet
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                
+                pos_hint: {'x': 0.715, 'y': 0.35}
+                size_hint: (0.05, 0.05)
+                    
+            ##########################################################     
+            # Figure Height
+            MDLabel:
+                text: 'Figure Height'
+                pos_hint: {'x': 0.32, 'y': 0.19}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: fig_height
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                
+                pos_hint: {'x': 0.345, 'y': 0.14}
+                size_hint: (0.05, 0.05)
+                
+            ##########################################################    
+            # Figure Width
+            MDLabel:
+                text: 'Figure Width'
+                pos_hint: {'x': 0.60, 'y': 0.19}
+                size_hint: (0.15, 0.1)    
+            MDTextField:
+                id: fig_width
+                multiline: False
+                disabled: True
+                mode: "round"
+                text_color_focus: "black"
+                
+                pos_hint: {'x': 0.625, 'y': 0.14}
+                size_hint: (0.05, 0.05)
+                    
+            ##########################################################
+            MDFillRoundFlatIconButton: 
+                id: validate_button
+                text: "Validate"
+                icon: "check"
+                text_color: "black"
+                md_bg_color: app.theme_cls.primary_color
+                disabled: True
+                pos_hint: {'x': 0.88, "y": 0.03}
+                size_hint: (0.08, 0.04)
+                on_release: app.validate_attributes("Facet Config")
+            
+            
+
+<DisplayPage>
+
+    name: "Display Page"
+    id: display_page
+    
+    FitImage:
+        # source: r"C:\Users\aking\OneDrive - SEAI\Documents\Work\Learning\packages\KivyMD\AutoGraphica_v1\images\page_design.png"
+        source: app.resource_path("images/page_design.png")
+        
+    MDBoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        
+    MDTopAppBar:
+        id: display_toolbar
+        title: "Gallery"
+        type: 'top'
+        elevation: 10
+
+        # Save options commented out
+        left_action_items: [["home-analytics", lambda x: app.return_home(x), "Home"], ["arrow-left", lambda x: app.back_(), "Back"], ["content-save", lambda x: app.save_fig(), "Save"], ["content-save-all", lambda x: app.save_all_fig(), "Save All"]]
+
+        # left_action_items: [["home-analytics", lambda x: app.return_home(x), "Home"], ["arrow-left", lambda x: app.back_(), "Back"]]
+        right_action_items: [["chevron-left", lambda x: app.previous(), "Previous"], ["chevron-right", lambda x: app.next_(), "Next"]]
+        pos_hint: {'top': 1}
+
+        
+    MDSwiper:
+        id: swiper
+        size_hint_y: None
+        height: root.height - display_toolbar.height - dp(40)
+        y: root.height - self.height - display_toolbar.height - dp(20)
+        
+  
